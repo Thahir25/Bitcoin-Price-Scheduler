@@ -1,0 +1,282 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #818cf8;
+    --background-color: #f1f5f9;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --hover-color: #4f46e5;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --table-header: #4f46e5;
+    --table-hover: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: var( --table-header);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+    box-shadow: var(--card-shadow);
+}
+
+.jobs-list {
+    margin-top: 2rem;
+}
+
+.job-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.job-content {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-job {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var(--error-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s;
+    z-index: 2;
+}
+
+.job-card:hover .delete-job {
+    opacity: 1;
+}
+
+.delete-job:hover {
+    background-color: #c0392b;
+}
+
+.status-active {
+    color: var(--success-color);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-active::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.report-controls {
+    margin-bottom: 1.5rem;
+}
+
+.report-controls select {
+    max-width: 300px;
+}
+
+.bitcoin-data {
+    margin-top: 1.5rem;
+}
+
+.price-change.positive {
+    color: var(--success-color);
+    font-weight: 500;
+    background-color: rgba(16, 185, 129, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.price-change.negative {
+    color: var(--error-color);
+    font-weight: 500;
+    background-color: rgba(239, 68, 68, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.loading,
+.select-job-message,
+.no-data-message,
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    background: var(--background-color);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.error-message {
+    color: var(--error-color);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.price-table th,
+.price-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.price-table th {
+    background-color: var(--table-header);
+    color: white;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.price-table tr:last-child td {
+    border-bottom: none;
+}
+
+.price-table tr:hover {
+    background-color: var(--table-hover);
+}
+
+.price-table td.positive {
+    color: var(--success-color);
+}
+
+.price-table td.negative {
+    color: var(--error-color);
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (max-width: 992px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .bitcoin-data {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card {
+        margin-bottom: 1rem;
+    }
+}

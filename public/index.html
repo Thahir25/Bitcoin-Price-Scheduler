@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Bitcoin Price Scheduler</h1>
+            <p>Schedule automated Bitcoin price checks at your preferred intervals</p>
+        </header>
+
+        <div class="dashboard-container">
+            <section class="job-form-section">
+                <h2>Create New Schedule</h2>
+                <form id="jobForm">
+                    <div class="form-group">
+                        <label for="jobName">Schedule Name</label>
+                        <input type="text" id="jobName" required placeholder="e.g., Daily Morning Check">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scheduleType">Schedule Type</label>
+                        <select id="scheduleType" required>
+                            <option value="">Select schedule type</option>
+                            <option value="minutely">Every X Minutes</option>
+                            <option value="hourly">Hourly</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="scheduleValueContainer">
+                        <!-- Dynamic input based on schedule type -->
+                    </div>
+
+                    <button type="submit">Create Schedule</button>
+                </form>
+
+                <div id="jobsList" class="jobs-list">
+                    <!-- Active jobs will be listed here -->
+                </div>
+            </section>
+
+            <section class="report-section">
+                <h2>Bitcoin Price Reports</h2>
+                <div class="report-controls">
+                    <select id="reportJobSelect">
+                        <option value="">Select a schedule to view report</option>
+                    </select>
+                </div>
+                <div id="reportData" class="report-data">
+                    <p class="select-job-message">Select a schedule to view its report</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
